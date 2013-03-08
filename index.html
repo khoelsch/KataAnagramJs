@@ -8,10 +8,12 @@
   
     <script type="text/javascript">
 
+
+
       function printAnagrams() {
         var i;
         var CSS_ID_RESULT_LIST = 'anagrams';
-
+        var dictionary = initializeDictionary();
         var anagrams = ['foo', 'bar'];
 
         appendBulletPointTo(CSS_ID_RESULT_LIST, 'Generated ' + anagrams.length + ' anagrams.');
@@ -21,9 +23,41 @@
         }
       }
 
+
+
+      function initializeDictionary() {
+/*
+Document Gin
+Condign Mute
+Induct Gnome
+Gnomic Tuned
+Coming Tuned
+*
+* */
+
+        return new Dictionary();
+      }
+
+      function Dictionary() {
+        var prefixTree = {};
+
+        function normalize(str) {
+          return str;
+        }
+
+        // expose Dictionary API
+        return {
+          normalize: normalize,
+          insert: function(twoWordAnagram) { /* stuff */ }
+        };
+      }
+
+
+
       //
       // Helper function to display test results
       //
+
       function assert(expr, assumption) {
         var liCssClass = !!expr ? 'success' : 'failure';
         appendBulletPointTo('testResults', assumption, liCssClass);
@@ -38,11 +72,15 @@
         document.getElementById(listCssId).appendChild(li);
       }
 
+
+
       //
       // The tests
       //
+
       function assert_foo() {
-        assert(1 === '1', 'Message.');
+        var expr = 'cdegimnnotu' === new Dictionary().normalize('documenting');
+        assert(expr, 'Normalizing "documenting" should result in "cdegimnnotu".');
       }
 
       //
