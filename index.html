@@ -8,16 +8,35 @@
   
     <script type="text/javascript">
 
+      function printAnagrams() {
+        var i;
+        var CSS_ID_RESULT_LIST = 'anagrams';
+
+        var anagrams = ['foo', 'bar'];
+
+        appendBulletPointTo(CSS_ID_RESULT_LIST, 'Generated ' + anagrams.length + ' anagrams.');
+        appendBulletPointTo(CSS_ID_RESULT_LIST, '=======================================');
+        for (i=0; i<anagrams.length; ++i) {
+          appendBulletPointTo(CSS_ID_RESULT_LIST, anagrams[i]);
+        }
+      }
+
       //
       // Helper function to display test results
       //
       function assert(expr, assumption) {
-        var li = document.createElement('li');
-        li.className = !!expr ? 'success' : 'failure';
-        li.appendChild(document.createTextNode(assumption));
-        document.getElementById('testResults').appendChild(li);
+        var liCssClass = !!expr ? 'success' : 'failure';
+        appendBulletPointTo('testResults', assumption, liCssClass);
       }
 
+      function appendBulletPointTo(listCssId, plainTextToInsert, liCssClass) {
+        var li = document.createElement('li');
+        if (liCssClass) {
+          li.className = liCssClass;
+        }
+        li.appendChild(document.createTextNode(plainTextToInsert));
+        document.getElementById(listCssId).appendChild(li);
+      }
 
       //
       // The tests
@@ -33,7 +52,16 @@
         assert_foo();
       };
     </script>
-  
+
+    <h1>Generate two-word anagrams of the word &quot;documenting&quot;</h1>
+    <p>
+      <button type="button" onclick="javascript:printAnagrams()">Make it so!</button>
+      <ul id="anagrams"></ul>
+    </p>
+
+    <hr />
+
+    <h1>Unittest Results</h1>
     <ul id="testResults"></ul>
   </body>
 </html>
