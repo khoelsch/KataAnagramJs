@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Anagram Kata</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta charset="UTF-8">
+  </head>
+  <body>
+  
+    <script type="text/javascript">
+
+      //
+      // Helper function to display test results
+      //
+      function assert(expr, assumption) {
+        var li = document.createElement('li');
+        li.className = !!expr ? 'success' : 'failure';
+        li.appendChild(document.createTextNode(assumption));
+        document.getElementById('testResults').appendChild(li);
+      }
+
+
+      //
+      // The tests
+      //
+      function assert_foo() {
+        assert(1 === '1', 'Message.');
+      }
+
+      //
+      // Execute our code, when document is loaded
+      //
+      window.onload = function() {
+        assert_foo();
+      };
+    </script>
+  
+    <ul id="testResults"></ul>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+li.success {
+  color: #0A0;
+  font-weight: bold;
+}
+
+li.failure {
+  color: #c00;
+  text-decoration: line-through;
+}
