@@ -8,7 +8,43 @@
   
     <script type="text/javascript">
 
-      function generateAnagramsFor(word) {
+      function Dictionary() {
+        return {};
+      }
+
+      function initializeDictionary() {
+        var wordList = [ // TODO load wordlist from file
+          'docu',
+          'cudo',
+          'menting'
+        ];
+
+        return new Dictionary();
+      }
+
+      function generateAnagramsFor(word, dictionary) {
+        // Gegeben: Initialisiertes Dictionary
+
+        // ---
+        // First naive algorithm
+        // ---
+        // SUBROUTINE 'calculateAnagrams(word)'
+          // Create 'wordChars': A list of characters of 'word'
+          // FOREACH 'knownWord_01' in word list
+            // Create 'knownWordChars_01': A list of characters of 'knownWord_01'
+            // IF is 'knownWordChars_01' a subset of 'wordChars'?
+              // YES (= found the first word of the (potential) anagram)
+                // extract the subset of 'knownWordChars' from 'wordChars'
+                // Create 'remainingWordChars'
+                // --- Intended code duplication! ---
+                // FOREACH 'knownWord_02' in word list
+                  // Create 'knownWordChars_02': A list of characters of 'knownWord_02'
+                  // IF is 'knownWordChars_02' equal to 'remainingWordChars'?
+                    // YES (= found the second word of the anagram)
+                      // remember 'knownWord_02' (ONE possible second part of the target anagram)
+                      // Add anagram: 'knownWord_01' plus 'knownWord_02'
+
+
         return ['foo', 'bar'];
       }
 
@@ -17,10 +53,12 @@
         var CSS_ID_RESULT_LIST = 'anagrams';
         var startDate;
         var passedMillis;
+        var dictionary;
         var anagrams;
 
         startDate = new Date();
-        anagrams = generateAnagramsFor("documentation");
+        dictionary = initializeDictionary();
+        anagrams = generateAnagramsFor("documenting", dictionary);
         passedMillis = new Date().getMilliseconds() - startDate.getMilliseconds();
 
         appendBulletPointTo(CSS_ID_RESULT_LIST, 'Generated ' + anagrams.length + ' anagrams. (took '+ passedMillis +'ms)');
