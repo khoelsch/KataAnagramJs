@@ -8,13 +8,22 @@
   
     <script type="text/javascript">
 
+      function generateAnagramsFor(word) {
+        return ['foo', 'bar'];
+      }
+
       function printAnagrams() {
         var i;
         var CSS_ID_RESULT_LIST = 'anagrams';
+        var startDate;
+        var passedMillis;
+        var anagrams;
 
-        var anagrams = ['foo', 'bar'];
+        startDate = new Date();
+        anagrams = generateAnagramsFor("documentation");
+        passedMillis = new Date().getMilliseconds() - startDate.getMilliseconds();
 
-        appendBulletPointTo(CSS_ID_RESULT_LIST, 'Generated ' + anagrams.length + ' anagrams.');
+        appendBulletPointTo(CSS_ID_RESULT_LIST, 'Generated ' + anagrams.length + ' anagrams. (took '+ passedMillis +'ms)');
         appendBulletPointTo(CSS_ID_RESULT_LIST, '=======================================');
         for (i=0; i<anagrams.length; ++i) {
           appendBulletPointTo(CSS_ID_RESULT_LIST, anagrams[i]);
