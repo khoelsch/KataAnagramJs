@@ -24,6 +24,30 @@
         return chars;
       }
 
+      function subsetContainedIn(potentialSubset, allCharacters) {
+        var char;
+        var i;
+        var posInWhole;
+
+        i = 0;
+        do {
+          posInWhole = allCharacters.indexOf(potentialSubset[i] > 0;
+
+        } while( dfg) ;
+
+
+        while ()) {
+
+        }
+
+        firstChar = potentialSubset[0];
+        if (th)
+        // Buchastabe in "theWhole" vorhaben
+           // YES
+             // FOREACH remainung
+        return false;
+      }
+
       function Dictionary() {
         return {};
       }
@@ -104,11 +128,12 @@
       //
       // The tests
       //
-      function charListFrom_assert_emptyListForEmptyString() {
+      function assert_charListFrom_emptyListForEmptyString() {
         var result = charListFrom("");
         assert(result.length === 0, 'Empty array for empty String');
       }
-      function charListFrom_assert_listForFoo() {
+
+      function assert_charListFrom_listForFoo() {
         var barChars = charListFrom("bar");
         assert(barChars.length === 3, 'Contains 3 elems');
         assert(barChars[0] === 'b', 'Expecting "b" at index 0');
@@ -116,12 +141,26 @@
         assert(barChars[2] === 'r', 'Expecting "r" at index 2');
       }
 
+      function assert_subsetContainedIn_simpleSuccessTest() {
+        var subset = ['f', 'o', 'o'];
+        var theWhole = ['f', 'o', 'o', 'b', 'a', 'r'];
+        assert(subsetContainedIn(subset, theWhole), '"foo" is a subset of "foobar"');
+      }
+
+      function assert_subsetContainedIn_simpleFailTest() {
+        var subset = ['f', 'o', 'o'];
+        var theWhole = ['f', 'o', 'b', 'a', 'a', 'r'];
+        assert(!subsetContainedIn(subset, theWhole), '"foo" is not a subset of "fobaar"');
+      }
+
       //
       // Execute our code, when document is loaded
       //
       window.onload = function() {
-        charListFrom_assert_emptyListForEmptyString();
-        charListFrom_assert_listForFoo();
+        assert_charListFrom_emptyListForEmptyString();
+        assert_charListFrom_listForFoo();
+        assert_subsetContainedIn_simpleSuccessTest();
+        assert_subsetContainedIn_simpleFailTest();
       };
     </script>
 
