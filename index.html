@@ -8,6 +8,22 @@
   
     <script type="text/javascript">
 
+      function charListFrom(string) {
+        var chars;
+        var i;
+        var currentChar;
+
+        if (!string) {
+          return [];
+        }
+
+        var chars = [];
+        for (i=0; i<string.length; ++i) {
+          chars.push(string[i]);
+        }
+        return chars;
+      }
+
       function Dictionary() {
         return {};
       }
@@ -88,15 +104,24 @@
       //
       // The tests
       //
-      function assert_foo() {
-        assert(1 === '1', 'Message.');
+      function charListFrom_assert_emptyListForEmptyString() {
+        var result = charListFrom("");
+        assert(result.length === 0, 'Empty array for empty String');
+      }
+      function charListFrom_assert_listForFoo() {
+        var barChars = charListFrom("bar");
+        assert(barChars.length === 3, 'Contains 3 elems');
+        assert(barChars[0] === 'b', 'Expecting "b" at index 0');
+        assert(barChars[1] === 'a', 'Expecting "a" at index 1');
+        assert(barChars[2] === 'r', 'Expecting "r" at index 2');
       }
 
       //
       // Execute our code, when document is loaded
       //
       window.onload = function() {
-        assert_foo();
+        charListFrom_assert_emptyListForEmptyString();
+        charListFrom_assert_listForFoo();
       };
     </script>
 
